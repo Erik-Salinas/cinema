@@ -1,0 +1,86 @@
+/* Reseteo básico */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #141414;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+p, label {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: normal;
+    color: #ffffff;
+    /* font-size: 16px;
+    line-height: 1.5; */
+}
+
+.cinema {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.665)), url(../img/background\-image.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.favorites {
+    margin: 0 1rem;
+}
+
+.favorites__title {
+    margin: 1rem 0;
+}
+
+.pelicula {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    /* Ajusta el tamaño de las columnas automáticamente */
+    gap: 10px;
+    justify-content: center;
+    margin: 0 1rem;
+}
+
+.cards {
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.cards .img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+
+/** DETAILS */
+.detailsCards img {
+    width: 300px;
+}
+
+#movie-details {
+    position: relative;
+    padding: 1.25rem;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+
+}

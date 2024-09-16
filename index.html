@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header></header>
+  <main>
+    <!-- <fieldset>: Agrupa y organiza elementos relacionados en un formulario.
+<legend>: Proporciona una etiqueta o descripción para el grupo de campos dentro del <fieldset>.
+Juntos, <fieldset> y <legend> ayudan a estructurar y mejorar tanto la usabilidad como la accesibilidad de los formularios en HTML. -->
+    <section class="cinema">
+      <h1 class="cinema__title">CINEMA</h1>
+      <form id="searchForm" class="cinema__form" autocomplete="off">
+        <label class="cinema__label">
+        <input type="search" id="search" class="cinema__input" aria-label="Buscar película" placeholder="Buscar una película, serie, persona......">
+      </label>
+        <button type="button" id="btnSearch" class="cinema__button">Buscar</button>
+      </form>
+    </section>
+    <section id="favorites" class="favorites">
+      <h2 class="favorites__title">Películas Favoritas</h2>
+      <div class="favorites__list" id="favorites__list"></div>
+    </section>
+    <section>
+      <div class="pelicula" id="pelicula"></div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
