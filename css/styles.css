@@ -1,86 +1,156 @@
 /* Reseteo básico */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 body {
-    background-color: #141414;
+	background-color: #141414;
 }
 
 h1,
 h2,
 h3 {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: bold;
-    color: #ffffff;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+	text-decoration: none;
 }
 
-p, label {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: normal;
-    color: #ffffff;
-    /* font-size: 16px;
-    line-height: 1.5; */
+p,
+a,
+label {
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: normal;
+	color: #ffffff;
+	text-decoration: none;
 }
 
 .cinema {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.665)), url(../img/background\-image.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.665)), url(../img/background\-image.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	width: 100%;
+	height: 50vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
 }
 
+.cinema__form {
+	min-width: 50%;
+	width: 18.75rem;
+}
+.cinema__search-wrapper {
+  position: relative;
+  width: 100%; 
+}
+.cinema__input {
+	border-radius: 10px;
+	border: none;
+	width: 100%;
+	padding: 0.3rem 0.5rem;
+	outline: none;
+	padding-right: 3rem; 
+}
+.cinema__button{
+	position: absolute; 
+  right: 0.5rem; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  background: none;
+  border: none;
+  cursor: pointer; 
+}
+.cinema__button i {
+  font-size: 1rem; /* Ajusta el tamaño del icono según tu diseño */
+}
 .favorites {
-    margin: 0 1rem;
+	margin: 0 1rem;
 }
 
 .favorites__title {
-    margin: 1rem 0;
+	margin: 1rem 0;
 }
 
-.pelicula {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    /* Ajusta el tamaño de las columnas automáticamente */
-    gap: 10px;
-    justify-content: center;
-    margin: 0 1rem;
+.result {
+	margin: 0 1rem;
 }
 
-.cards {
-    background-color: gray;
-    display: flex;
-    flex-direction: column;
+.pelicula, .favorites__list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	/* Ajusta el tamaño de las columnas automáticamente */
+	gap: 10px;
+	justify-content: center;
 }
 
-.cards .img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    margin-bottom: 0.5rem;
+.movie__cards, .favorite__cards {
+	background-color: rgb(255, 255, 255);
+	display: flex;
+	flex-direction: column;
+	border-radius: 5px;
 }
+
+.movie__img, .favorite__img {
+	width: 100%;
+	height: 250px;
+	object-fit: cover;
+	margin-bottom: 0.5rem;
+	border-radius: 5px 5px 0 0;
+}
+
+.movie__title,
+.movie__year,
+.favorite__title {
+	font-size: 1rem;
+	line-height: 1.1;
+	color: black;
+	padding: 0 0.3rem;
+}
+
+.movie__year {
+	font-size: 1rem;
+	color: gray;
+}
+
 
 /** DETAILS */
-.detailsCards img {
-    width: 300px;
+.details {
+	position: relative;
+	padding: 1.25rem;
+	color: white;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 100vh;
 }
 
-#movie-details {
-    position: relative;
-    padding: 1.25rem;
-    color: white;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
+.details__title {
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+	text-align: center;
+}
 
+.details__img {
+	max-width: 80%;
+	width: 18.75rem;
+	display: block;
+	margin: auto;
+}
+
+.details__text {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.5;
+	color: rgb(228, 224, 224);
+}
+.details__text > strong {
+	margin: 0.2rem 0;
+	color: white;
 }
