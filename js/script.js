@@ -1,4 +1,5 @@
-const searchForm =document.querySelector('#searchForm'); //Formulario
+
+const searchForm = document.querySelector('#searchForm'); //Formulario
 const btnSearch = document.querySelector('#btnSearch'); //boton
 const pelicula = document.querySelector('#pelicula');//Contenedor
 const favoritesDiv = document.querySelector('#favorites__list'); // Contenedor para las películas favoritas
@@ -12,14 +13,16 @@ function loadFavorites() {
     let favorites = JSON.parse(localStorage.getItem('favorites__list')) || [];
     favoritesDiv.innerHTML = '';
     favorites.forEach(movie => {
+        const posterPath = movie.poster_path ? `${apiImg}${movie.poster_path}` : 'img/img-not-found.png';
         favoritesDiv.innerHTML += `
             <div class="favorite__cards">
                 <a class="favorite__link" href="pages/movie.html?id=${movie.id}">
-                    <img class="favorite__img" src="${apiImg}${movie.poster_path}" alt="${movie.title}">
+                    <img class="favorite__img" src="${posterPath }" alt="${movie.title}">
                     <h2 class="favorite__title">${movie.title}</h2>
                     <p class="movie__year">${movie.release_date}</p>
                 </a>
-                <button class="favorite__btn" onclick="removeFromFavorites(${movie.id})">Eliminar de Favoritos</button>
+                <button class="favorite__btn" onclick="removeFromFavorites(${movie.id})"><svg viewBox="0 0 512 512"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+                </button>
             </div>
         `;
     });
@@ -36,10 +39,16 @@ function removeFromFavorites(movieId) {
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     let inputSearch = document.querySelector('#search').value;
+    let inputAlert= document.querySelector('#searchAlert');
 
     if (!inputSearch) {
-        window.alert('Ingrese un nombre de pelicula');
+        /* window.alert('Ingrese un nombre de pelicula');
+        return; */
+        inputAlert.innerHTML = `<div class="cinema__alert"><p class="cinema__alert--false">Ingrese un nombre de pelicula</p></div> `; 
         return;
+    }
+    else{
+        inputAlert.innerHTML = ' ';
     }
 
     // Construye la URL de solicitud con el término de búsqueda y el idioma en español
@@ -65,12 +74,12 @@ searchForm.addEventListener('submit', (event) => {
                 padre.classList.add('movie__cards');
                 let link = document.createElement('a');
                 link.href = `pages/movie.html?id=${element.id}`
-                 // Verifica si hay una imagen de cartelera disponible
-                 //Operador Ternario                                    verdadero                 falso
+                // Verifica si hay una imagen de cartelera disponible
+                //Operador Ternario                                    verdadero                 falso
                 const posterPath = element.poster_path ? `${apiImg}${element.poster_path}` : 'img/img-not-found.png'; // Reemplaza con la URL de la imagen predeterminada
 
                 link.innerHTML += `
-                <img class="movie__img" src="${posterPath}" alt="Imagen de la película">
+                <img class="movie__img" src="${posterPath}" alt="${element.title}">
                 <h2 class="movie__title">${element.title}</h2>
                 <p class="movie__year">${element.release_date}</p>
                 `

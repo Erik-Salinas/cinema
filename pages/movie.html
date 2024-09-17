@@ -9,16 +9,32 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Detalles de la Película</title>
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
   <header>
-
+    <button class="open-menu" id="open"><i class="fa-solid fa-bars"></i></button>
+    <nav class="nav" id="nav">
+      <button class="close-menu" id="close"><i class="fa-solid fa-bars"></i></i></button>
+      <ul class="nav__list">
+        <li class="nav__item nav__item--active"><a href="../index.html" class="nav__link" id="nav__link">Peliculas</a></li>
+        <li class="nav__item">
+          <a href="#" class="nav__link" id="nav__link">Series</a>
+        </li>
+        <li class="nav__item"><a href="#" class="nav__link" id="nav__link">Actores</a></li>
+        <li class="nav__item"><a href="#" class="nav__link" id="nav__link">Novedades</a></li>
+      </ul>
+    </nav>
   </header>
   <main>
     <section id="movie-details" class="details">
+      <!--Aside  Contiene la información adicional que complementa el contenido principal. -->
+      <aside id="detailsAlert"></aside>
       <article id="details"></article>
     </section>
   </main>
@@ -26,6 +42,7 @@
 
   </footer>
   <script src="../js/details.js"></script>
+  <script src="../js/menu.js"></script>
 </body>
 
 </html>

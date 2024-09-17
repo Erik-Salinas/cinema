@@ -20,12 +20,94 @@ h3 {
 
 p,
 a,
-label {
+label, li , a {
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: normal;
 	color: #ffffff;
 	text-decoration: none;
 }
+
+header {
+    background-color: #000000;
+    position: sticky;
+    top: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: baseline;
+    z-index: 2;
+    border-bottom: 1px solid #0000002e;
+}
+
+/**NAVEGACIÓN**/
+.open-menu {
+    display: block;
+    border: none;
+    cursor: pointer;
+	background: none;
+	margin: 0.5rem auto 0.5rem 1rem;
+}
+
+.close-menu {
+    border: none;
+    cursor: pointer;
+	background: none;
+	margin: 0.5rem auto 0.5rem 1rem;
+}
+
+.fa-bars {
+    font-size: 2rem;
+    color: white;
+}
+
+.nav {
+    background-color:#000000;
+    opacity: 0;
+    visibility: hidden;
+    /* display: flex;
+    flex-direction: column;
+    align-items: start; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
+    height: 100vh;
+    width: 50%;
+    border-left: 1px solid #000000;
+    transition: opacity 1s, visibility 1s;
+}
+
+.nav-visible {
+    opacity: 1;
+    visibility: visible;
+    transition: all 1s;
+}
+
+.nav__list {
+    padding-left: 0.5rem;
+}
+
+.nav__item {
+    
+    text-align: end;
+    margin-top: 1.5rem;
+	list-style: none;
+	text-align: start;
+}
+.nav__item--active{
+	border-left: 2px solid red;
+}
+.nav__link{
+    border: none;
+    color: #fff;
+    background: none;
+    position: relative;
+	font-size: 1.2rem;
+	margin: 0 0.5rem;
+}
+
 
 .cinema {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.665)), url(../img/background\-image.jpg);
@@ -46,29 +128,60 @@ label {
 	min-width: 50%;
 	width: 18.75rem;
 }
+
 .cinema__search-wrapper {
-  position: relative;
-  width: 100%; 
+	position: relative;
+	width: 100%;
+	margin-bottom:1rem;
 }
+
 .cinema__input {
 	border-radius: 10px;
 	border: none;
 	width: 100%;
 	padding: 0.3rem 0.5rem;
 	outline: none;
-	padding-right: 3rem; 
+	padding-right: 3rem;
 }
-.cinema__button{
-	position: absolute; 
-  right: 0.5rem; 
-  top: 50%; 
-  transform: translateY(-50%); 
-  background: none;
-  border: none;
-  cursor: pointer; 
+
+.cinema__button {
+	position: absolute;
+	right: 0.5rem;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	cursor: pointer;
 }
+
 .cinema__button i {
-  font-size: 1rem; /* Ajusta el tamaño del icono según tu diseño */
+	font-size: 1rem;
+}
+.cinema__alert , .movie__alert{
+	background-color: #2c0b0e;
+	border: 1px #842029 solid;
+	border-radius: 5px;
+	padding: 0.5rem;
+	width: 100%;
+}
+
+.cinema__alert{
+	margin-bottom: 1rem ;
+}
+.movie__alert{
+	background-color: #051b11;
+	border: 1px #0f5132 solid;
+	margin-bottom: 1rem ;
+}
+.cinema__alert--false{
+	text-align: center;
+	color:  #ea868f;
+	font-size: 1rem;
+}
+.cinema__alert--true{
+	text-align: center;
+	color:  #75b798;
+	font-size: 1rem;
 }
 .favorites {
 	margin: 0 1rem;
@@ -82,7 +195,8 @@ label {
 	margin: 0 1rem;
 }
 
-.pelicula, .favorites__list {
+.pelicula,
+.favorites__list {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	/* Ajusta el tamaño de las columnas automáticamente */
@@ -90,14 +204,16 @@ label {
 	justify-content: center;
 }
 
-.movie__cards, .favorite__cards {
+.movie__cards,
+.favorite__cards {
 	background-color: rgb(255, 255, 255);
 	display: flex;
 	flex-direction: column;
 	border-radius: 5px;
 }
 
-.movie__img, .favorite__img {
+.movie__img,
+.favorite__img {
 	width: 100%;
 	height: 250px;
 	object-fit: cover;
@@ -150,7 +266,30 @@ label {
 	line-height: 1.5;
 	color: rgb(228, 224, 224);
 }
-.details__text > strong {
+
+.details__text>strong {
 	margin: 0.2rem 0;
 	color: white;
+}
+
+.details__btn,
+.favorite__btn {
+	width: 1.875rem;
+	border: none;
+	background: none;
+	display: block;
+	margin: 0.8rem 0.5rem 0 auto;
+	cursor: pointer;
+}
+
+.favorite__btn>svg {
+	fill: #ff0000;
+}
+
+.active {
+	fill: rgb(255, 0, 0);
+}
+
+.inactive {
+	fill: #cccccc;
 }
