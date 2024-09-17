@@ -45,13 +45,13 @@ if (movieId) {
             localStorage.setItem(`movie-${json.id}`, JSON.stringify(json));
 
             detailsDiv.innerHTML = `
-                <article class="detailsCards">
-                    <img src="${posterPath}" alt="Imagen de la película">
-                    <h2>${json.title}</h2>
-                    <p><strong>Fecha de lanzamiento:</strong> ${json.release_date}</p>
-                    <p><strong>Resumen:</strong> ${json.overview}</p>
-                    <p><strong>Director:</strong> ${directorName}</p>
-                    <button onclick='handleAddToFavorites(${json.id})'>Añadir a Favoritos</button>
+                <article class="details__cards">
+                    <h2 class="details__title">${json.title}</h2>
+                    <img class="details__img" src="${posterPath}" alt="${json.title}">
+                    <p class="details__text"><strong>Lanzamiento</strong> ${json.release_date}</p>
+                    <p class="details__text"><strong>Vista general</strong> ${json.overview}</p>
+                    <p class="details__text"><strong>Director</strong> ${directorName}</p>
+                    <button class="details__btn" onclick='handleAddToFavorites(${json.id})'>Añadir a Favoritos</button>
                 </article>
             `;
             movieDetailsDiv.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.656), rgba(0, 0, 0, 0.5)),url('${backdropPath}')`;

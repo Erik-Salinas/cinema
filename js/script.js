@@ -13,12 +13,13 @@ function loadFavorites() {
     favoritesDiv.innerHTML = '';
     favorites.forEach(movie => {
         favoritesDiv.innerHTML += `
-            <div class="favorite-card">
-                <a href="pages/movie.html?id=${movie.id}">
-                    <img src="${apiImg}${movie.poster_path}" alt="${movie.title}">
-                    <h3>${movie.title}</h3>
+            <div class="favorite__cards">
+                <a class="favorite__link" href="pages/movie.html?id=${movie.id}">
+                    <img class="favorite__img" src="${apiImg}${movie.poster_path}" alt="${movie.title}">
+                    <h2 class="favorite__title">${movie.title}</h2>
+                    <p class="movie__year">${movie.release_date}</p>
                 </a>
-                <button onclick="removeFromFavorites(${movie.id})">Eliminar de Favoritos</button>
+                <button class="favorite__btn" onclick="removeFromFavorites(${movie.id})">Eliminar de Favoritos</button>
             </div>
         `;
     });
@@ -61,7 +62,7 @@ searchForm.addEventListener('submit', (event) => {
             for (let i = 0; i < 20; i++) {
                 const element = json.results[i];
                 let padre = document.createElement('article');
-                padre.classList.add('cards');
+                padre.classList.add('movie__cards');
                 let link = document.createElement('a');
                 link.href = `pages/movie.html?id=${element.id}`
                  // Verifica si hay una imagen de cartelera disponible
@@ -69,9 +70,9 @@ searchForm.addEventListener('submit', (event) => {
                 const posterPath = element.poster_path ? `${apiImg}${element.poster_path}` : 'img/img-not-found.png'; // Reemplaza con la URL de la imagen predeterminada
 
                 link.innerHTML += `
-                <img class="img" src="${posterPath}" alt="Imagen de la película">
-                <h2 class="title">${element.title}</h2>
-                <p class="year">${element.release_date}</p>
+                <img class="movie__img" src="${posterPath}" alt="Imagen de la película">
+                <h2 class="movie__title">${element.title}</h2>
+                <p class="movie__year">${element.release_date}</p>
                 `
 
                 padre.appendChild(link);
