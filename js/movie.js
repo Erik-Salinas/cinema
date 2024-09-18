@@ -16,7 +16,7 @@ function loadFavorites() {
         const posterPath = movie.poster_path ? `${apiImg}${movie.poster_path}` : 'img/img-not-found.png';
         favoritesDiv.innerHTML += `
             <div class="favorite__cards">
-                <a class="favorite__link" href="pages/movie.html?id=${movie.id}">
+                <a class="favorite__link" href="pages/view-movie.html?id=${movie.id}">
                     <img class="favorite__img" src="${posterPath }" alt="${movie.title}">
                     <h2 class="favorite__title">${movie.title}</h2>
                     <p class="movie__year">${movie.release_date}</p>

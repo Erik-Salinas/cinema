@@ -108,7 +108,7 @@ header {
 	margin: 0 0.5rem;
 }
 
-
+/* *INDEX */
 .cinema {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.665)), url(../img/background\-image.jpg);
 	background-repeat: no-repeat;
@@ -136,10 +136,11 @@ header {
 }
 
 .cinema__input {
-	border-radius: 10px;
+	border-radius: 20px;
 	border: none;
 	width: 100%;
-	padding: 0.3rem 0.5rem;
+	height: 35px;
+	padding: 0 0.5rem;
 	outline: none;
 	padding-right: 3rem;
 }

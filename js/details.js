@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     if (movieId) {
-        // Obtener detalles de la película y el equipo de producción
+        // Obtener detalles de la película, idioma y el equipo de producción
         const url = `${api}${movieId}?api_key=${apiKey}&language=es-ES&append_to_response=credits`;
 
         fetch(url)
