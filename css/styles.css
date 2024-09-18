@@ -87,14 +87,14 @@ header {
 
 .nav__list {
     padding-left: 0.5rem;
+	margin-top: 1.5rem;
 }
 
 .nav__item {
-    
     text-align: end;
-    margin-top: 1.5rem;
 	list-style: none;
 	text-align: start;
+	margin: 2rem 0;
 }
 .nav__item--active{
 	border-left: 2px solid red;

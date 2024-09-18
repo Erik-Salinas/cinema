@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Cinema | Peliculas </title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <header>
+        <button class="open-menu" id="open"><i class="fa-solid fa-bars"></i></button>
+        <nav class="nav" id="nav">
+            <button class="close-menu" id="close"><i class="fa-solid fa-bars"></i></i></button>
+            <ul class="nav__list">
+                <li class="nav__item nav__item"><a href="../index.html" class="nav__link" id="nav__link">Peliculas</a>
+                </li>
+                <li class="nav__item--active">
+                    <a href="#" class="nav__link" id="nav__link">Series</a>
+                </li>
+                <li class="nav__item"><a href="actors.html" class="nav__link" id="nav__link">Actores</a></li>
+                <li class="nav__item"><a href="news.html" class="nav__link" id="nav__link">Novedades</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="cinema">
+            <h1 class="cinema__title">CINEMA</h1>
+            <form id="searchForm" class="cinema__form" autocomplete="off">
+                <div class="cinema__search-wrapper">
+                    <input type="text" id="search" class="cinema__input" aria-label="Buscar series"
+                        placeholder="Buscar una serie">
+                    <button type="button" id="btnSearch" class="cinema__button"><i
+                            class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <div id="searchAlert"></div>
+            </form>
+        </section>
+        <section id="favorites" class="favorites">
+            <h2 class="favorites__title">Series Favoritas</h2>
+            <div class="favorites__list" id="favorites__list"></div>
+        </section>
+        <section class="result">
+            <h2 class="favorites__title">Resultados</h2>
+            <div class="pelicula" id="pelicula"></div>
+        </section>
+    </main>
+    <footer></footer>
+    <script src="../js/menu.js"></script>
+</body>
+
+</html>

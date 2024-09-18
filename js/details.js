@@ -98,7 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
         detailsDiv.innerHTML = '<p>No se encontró el ID de la película.</p>';
     }
 
-    // Función para manejar el clic en el botón de agregar a favoritos
+    //!INVESTIGAR
+// Función para manejar el clic en el botón de agregar a favoritos
     document.addEventListener('click', (event) => {
         if (event.target.closest('#addToFavoritesButton')) {
             handleAddToFavorites(movieId);

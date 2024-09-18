@@ -73,7 +73,7 @@ searchForm.addEventListener('submit', (event) => {
                 let padre = document.createElement('article');
                 padre.classList.add('movie__cards');
                 let link = document.createElement('a');
-                link.href = `pages/movie.html?id=${element.id}`
+                link.href = `pages/view-movie.html?id=${element.id}`
                 // Verifica si hay una imagen de cartelera disponible
                 //Operador Ternario                                    verdadero                 falso
                 const posterPath = element.poster_path ? `${apiImg}${element.poster_path}` : 'img/img-not-found.png'; // Reemplaza con la URL de la imagen predeterminada
