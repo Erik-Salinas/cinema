@@ -188,7 +188,7 @@ header {
 	margin: 0 1rem;
 }
 
-.favorites__title {
+.favorites__title, .result__title {
 	margin: 1rem 0;
 }
 

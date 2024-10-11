@@ -2,31 +2,51 @@
 const searchForm = document.querySelector('#searchForm'); //Formulario
 const btnSearch = document.querySelector('#btnSearch'); //boton
 const pelicula = document.querySelector('#pelicula');//Contenedor
-const favoritesDiv = document.querySelector('#favorites__list'); // Contenedor para las películas favoritas
+const favorites =document.querySelector('#favorites'); // Contenedor para las películas favoritas
+const favoritesList = document.querySelector('#favorites__list'); // Lista de peliculas
 const apiKey = 'e355b2b4334b7cdd0cda45a34c6256a4';  //Clave de api
-const api = 'https://api.themoviedb.org/3/search/movie'; //Api peliculas
+const apiSearch = 'https://api.themoviedb.org/3/search/movie'; //Api peliculas para buscar
+const apiFavorite = 'https://api.themoviedb.org/3'; // api peliculas favoritas
 const apiImg = 'https://image.tmdb.org/t/p/original';//api imagenes
+
+
 
 //!INVESTIGAR
 // Función para mostrar las películas favoritas
 function loadFavorites() {
     let favorites = JSON.parse(localStorage.getItem('favorites__list')) || [];
-    favoritesDiv.innerHTML = '';
+
+    // Limpia el contenedor de favoritos
+    favoritesList.innerHTML = '';
+
+    const titleElement = document.querySelector('.favorites__title');
+    if (favorites.length > 0) {
+        titleElement.style.display = 'block';
+    } else {
+        titleElement.style.display = 'none';
+    }
+
+    // Agrega las tarjetas de las películas favoritas
     favorites.forEach(movie => {
         const posterPath = movie.poster_path ? `${apiImg}${movie.poster_path}` : 'img/img-not-found.png';
-        favoritesDiv.innerHTML += `
+        favoritesList.innerHTML += `
             <div class="favorite__cards">
                 <a class="favorite__link" href="pages/view-movie.html?id=${movie.id}">
-                    <img class="favorite__img" src="${posterPath }" alt="${movie.title}">
+                    <img class="favorite__img" src="${posterPath}" alt="${movie.title}">
                     <h2 class="favorite__title">${movie.title}</h2>
                     <p class="movie__year">${movie.release_date}</p>
                 </a>
-                <button class="favorite__btn" onclick="removeFromFavorites(${movie.id})"><svg viewBox="0 0 512 512"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+                <button class="favorite__btn" onclick="removeFromFavorites(${movie.id})">
+                    <svg viewBox="0 0 512 512">
+                        <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
+                    </svg>
                 </button>
             </div>
         `;
     });
+
 }
+
 //!INVESTIGAR
 // Función para eliminar película de favoritos
 function removeFromFavorites(movieId) {
@@ -36,24 +56,58 @@ function removeFromFavorites(movieId) {
     loadFavorites(); // Actualiza la lista de favoritos
 }
 
+//Mostrar todas las películas
+function showMovies() {
+    //Peliculas favoritas
+    const url = `${apiFavorite}/movie/popular?api_key=${apiKey}&language=es-ES`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(json => {
+            const numResults = Math.min(json.results.length, 100); //Evitamos que saslga error de indefinodo id 
+            for (let i = 0; i < numResults; i++) {
+                const element = json.results[i];
+                let padre = document.createElement('article');
+                padre.classList.add('movie__cards');
+                let link = document.createElement('a');
+                link.href = `pages/view-movie.html?id=${element.id}`;
+                const posterPath = element.poster_path ? `${apiImg}${element.poster_path}` : 'img/img-not-found.png'; // Imagen por defecto
+
+                link.innerHTML += `
+                <img class="movie__img" src="${posterPath}" alt="${element.title}">
+                <h2 class="movie__title">${element.title}</h2>
+                <p class="movie__year">${element.release_date}</p>
+                `;
+                padre.appendChild(link);
+                pelicula.appendChild(padre);
+            }
+        })
+        .catch(error => {
+            console.log('Se encontró un error: ' + error);
+        });
+};
+
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
+
     let inputSearch = document.querySelector('#search').value;
-    let inputAlert= document.querySelector('#searchAlert');
+    let inputAlert = document.querySelector('#searchAlert');
 
     if (!inputSearch) {
         /* window.alert('Ingrese un nombre de pelicula');
         return; */
-        inputAlert.innerHTML = `<div class="cinema__alert"><p class="cinema__alert--false">Ingrese un nombre de pelicula</p></div> `; 
+        inputAlert.innerHTML = `<div class="cinema__alert"><p class="cinema__alert--false">Ingrese un nombre de pelicula</p></div> `;
         return;
     }
-    else{
+    else {
         inputAlert.innerHTML = ' ';
     }
 
+    // Ocultar la sección de favoritos
+    favorites.style.display = 'none';
+    
     // Construye la URL de solicitud con el término de búsqueda y el idioma en español
-    const url = `${api}?api_key=${apiKey}&query=${encodeURIComponent(inputSearch)}&language=es-ES`;
-
+    const url = `${apiSearch}?api_key=${apiKey}&query=${encodeURIComponent(inputSearch)}&language=es-ES`;
     //Inicia una solicitud a la API.
     fetch(url)
         //Procesa la respuesta cuando se resuelve la promesa
@@ -103,5 +157,8 @@ btnSearch.addEventListener('click', () => {
     searchForm.dispatchEvent(new Event('submit'));
 });
 
-// Cargar favoritos al iniciar la página
-window.onload = loadFavorites;
+// Cargar favoritos  y películas al iniciar la página
+window.onload = () => {
+    loadFavorites();
+    showMovies();
+};
